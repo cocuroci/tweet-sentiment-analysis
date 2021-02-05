@@ -8,11 +8,12 @@ protocol SearchViewDisplaying: AnyObject {
 final class SearchViewController: UITableViewController, ViewConfiguration {
     private let interactor: SearchInteracting
     
-    private let searchController: UISearchController = {
+    private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Buscar tweets do usuário"
         searchController.searchBar.autocapitalizationType = .none
+        searchController.searchBar.delegate = self
         return searchController
     }()
     
@@ -30,7 +31,6 @@ final class SearchViewController: UITableViewController, ViewConfiguration {
         title = "Buscar tweets"
         view.backgroundColor = .white
         navigationItem.searchController = searchController
-        searchController.searchBar.delegate = self
         tableView.tableFooterView = UIView()
     }
 }

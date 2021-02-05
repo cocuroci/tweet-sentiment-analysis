@@ -11,7 +11,6 @@
 		AC4FE5E525CDBA5F00AABAA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE5E425CDBA5F00AABAA0 /* SceneDelegate.swift */; };
 		AC4FE5EC25CDBA6000AABAA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC4FE5EB25CDBA6000AABAA0 /* Assets.xcassets */; };
 		AC4FE5EF25CDBA6000AABAA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC4FE5ED25CDBA6000AABAA0 /* LaunchScreen.storyboard */; };
-		AC4FE5FA25CDBA6000AABAA0 /* TweetSentimentAnalysisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE5F925CDBA6000AABAA0 /* TweetSentimentAnalysisTests.swift */; };
 		AC4FE62425CDC6F700AABAA0 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = AC4FE62325CDC6F700AABAA0 /* Moya */; };
 		AC4FE63025CDC8B000AABAA0 /* SearchFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE62F25CDC8B000AABAA0 /* SearchFactory.swift */; };
 		AC4FE63825CDC9C400AABAA0 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE63725CDC9C400AABAA0 /* SearchViewController.swift */; };
@@ -22,6 +21,7 @@
 		AC4FE65125CDD7C600AABAA0 /* Tweets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE65025CDD7C600AABAA0 /* Tweets.swift */; };
 		AC4FE65725CDFB7300AABAA0 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE65625CDFB7300AABAA0 /* Environment.swift */; };
 		AC4FE65B25CDFC3D00AABAA0 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE65A25CDFC3D00AABAA0 /* SearchPresenter.swift */; };
+		AC4FE68925CE01D700AABAA0 /* SearchInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE68825CE01D700AABAA0 /* SearchInteractorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,6 @@
 		AC4FE5EE25CDBA6000AABAA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC4FE5F025CDBA6000AABAA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC4FE5F525CDBA6000AABAA0 /* TweetSentimentAnalysisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TweetSentimentAnalysisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC4FE5F925CDBA6000AABAA0 /* TweetSentimentAnalysisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetSentimentAnalysisTests.swift; sourceTree = "<group>"; };
 		AC4FE5FB25CDBA6000AABAA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC4FE62F25CDC8B000AABAA0 /* SearchFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFactory.swift; sourceTree = "<group>"; };
 		AC4FE63725CDC9C400AABAA0 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +52,7 @@
 		AC4FE65025CDD7C600AABAA0 /* Tweets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweets.swift; sourceTree = "<group>"; };
 		AC4FE65625CDFB7300AABAA0 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		AC4FE65A25CDFC3D00AABAA0 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		AC4FE68825CE01D700AABAA0 /* SearchInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +106,7 @@
 		AC4FE5F825CDBA6000AABAA0 /* TweetSentimentAnalysisTests */ = {
 			isa = PBXGroup;
 			children = (
-				AC4FE5F925CDBA6000AABAA0 /* TweetSentimentAnalysisTests.swift */,
+				AC4FE68625CE01B500AABAA0 /* Scenes */,
 				AC4FE5FB25CDBA6000AABAA0 /* Info.plist */,
 			);
 			path = TweetSentimentAnalysisTests;
@@ -160,6 +160,22 @@
 				AC4FE63C25CDCC0900AABAA0 /* ViewConfiguration.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		AC4FE68625CE01B500AABAA0 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				AC4FE68725CE01BC00AABAA0 /* Search */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		AC4FE68725CE01BC00AABAA0 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				AC4FE68825CE01D700AABAA0 /* SearchInteractorTests.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,7 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC4FE5FA25CDBA6000AABAA0 /* TweetSentimentAnalysisTests.swift in Sources */,
+				AC4FE68925CE01D700AABAA0 /* SearchInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
