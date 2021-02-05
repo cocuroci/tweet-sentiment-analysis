@@ -5,10 +5,12 @@ protocol SearchInteracting {
 }
 
 final class SearchInteractor {
+    private let presenter: SearchPresenting
     private let service: SearchServicing
     private let minimumCharacters = 3
     
-    init(service: SearchServicing) {
+    init(presenter: SearchPresenting, service: SearchServicing) {
+        self.presenter = presenter
         self.service = service
     }
 }

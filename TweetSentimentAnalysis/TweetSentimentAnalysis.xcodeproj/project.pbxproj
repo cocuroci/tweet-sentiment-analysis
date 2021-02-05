@@ -21,6 +21,7 @@
 		AC4FE64B25CDD42100AABAA0 /* SearchEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE64A25CDD42100AABAA0 /* SearchEndpoint.swift */; };
 		AC4FE65125CDD7C600AABAA0 /* Tweets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE65025CDD7C600AABAA0 /* Tweets.swift */; };
 		AC4FE65725CDFB7300AABAA0 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE65625CDFB7300AABAA0 /* Environment.swift */; };
+		AC4FE65B25CDFC3D00AABAA0 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE65A25CDFC3D00AABAA0 /* SearchPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		AC4FE64A25CDD42100AABAA0 /* SearchEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEndpoint.swift; sourceTree = "<group>"; };
 		AC4FE65025CDD7C600AABAA0 /* Tweets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweets.swift; sourceTree = "<group>"; };
 		AC4FE65625CDFB7300AABAA0 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		AC4FE65A25CDFC3D00AABAA0 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				AC4FE64225CDD1E800AABAA0 /* SearchInteractor.swift */,
 				AC4FE64625CDD3DD00AABAA0 /* SearchService.swift */,
 				AC4FE65025CDD7C600AABAA0 /* Tweets.swift */,
+				AC4FE65A25CDFC3D00AABAA0 /* SearchPresenter.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC4FE65B25CDFC3D00AABAA0 /* SearchPresenter.swift in Sources */,
 				AC4FE64325CDD1E800AABAA0 /* SearchInteractor.swift in Sources */,
 				AC4FE63025CDC8B000AABAA0 /* SearchFactory.swift in Sources */,
 				AC4FE5E325CDBA5F00AABAA0 /* AppDelegate.swift in Sources */,
