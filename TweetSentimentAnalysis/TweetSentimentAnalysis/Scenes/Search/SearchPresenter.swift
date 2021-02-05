@@ -3,6 +3,8 @@ import Foundation
 protocol SearchPresenting {
     var viewController: SearchViewDisplaying? { get set }
     func presentTweets(_ tweets: Tweets)
+    func presentEmptySearch()
+    func presentGenericError()
 }
 
 final class SearchPresenter {
@@ -11,6 +13,14 @@ final class SearchPresenter {
 
 extension SearchPresenter: SearchPresenting {
     func presentTweets(_ tweets: Tweets) {
+        
+    }
+    
+    func presentEmptySearch() {
+        
+    }
+    
+    func presentGenericError() {
         
     }
 }

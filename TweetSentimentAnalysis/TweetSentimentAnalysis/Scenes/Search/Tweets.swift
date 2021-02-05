@@ -1,7 +1,7 @@
 import Foundation
 
 struct Tweets: Decodable {
-    let data: [Tweet]
+    let data: [Tweet]?
 }
 
 struct Tweet: Decodable {

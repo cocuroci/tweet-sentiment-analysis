@@ -7,11 +7,12 @@ protocol SearchInteracting {
 final class SearchInteractor {
     private let presenter: SearchPresenting
     private let service: SearchServicing
-    private let minimumCharacters = 3
+    private let minimumCharacters: Int
     
-    init(presenter: SearchPresenting, service: SearchServicing) {
+    init(presenter: SearchPresenting, service: SearchServicing, minimumCharacters: Int = 3) {
         self.presenter = presenter
         self.service = service
+        self.minimumCharacters = minimumCharacters
     }
 }
 
@@ -24,9 +25,9 @@ extension SearchInteractor: SearchInteracting {
         service.search(user: user) { [weak self] result in
             switch result {
             case .success(let tweets):
-                self?.presenter.presentTweets(tweets)
-            case .failure(let error):
-                break
+                tweets.data == nil ? self?.presenter.presentEmptySearch() : self?.presenter.presentTweets(tweets)
+            case .failure:
+                self?.presenter.presentGenericError()
             }
         }
     }
