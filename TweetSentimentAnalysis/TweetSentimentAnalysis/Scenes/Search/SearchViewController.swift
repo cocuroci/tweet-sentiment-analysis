@@ -1,6 +1,10 @@
 import UIKit
 import Moya
 
+protocol SearchViewDisplaying: AnyObject {
+    
+}
+
 final class SearchViewController: UITableViewController, ViewConfiguration {
     private let interactor: SearchInteracting
     

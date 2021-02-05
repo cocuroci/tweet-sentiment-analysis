@@ -21,8 +21,13 @@ extension SearchInteractor: SearchInteracting {
             return
         }
         
-        service.search(user: user) { result in
-            debugPrint(result)
+        service.search(user: user) { [weak self] result in
+            switch result {
+            case .success(let tweets):
+                self?.presenter.presentTweets(tweets)
+            case .failure(let error):
+                break
+            }
         }
     }
 }

@@ -1,14 +1,16 @@
 import Foundation
-import UIKit
 
 protocol SearchPresenting {
-    var viewController: UIViewController? { get set }
+    var viewController: SearchViewDisplaying? { get set }
+    func presentTweets(_ tweets: Tweets)
 }
 
 final class SearchPresenter {
-    weak var viewController: UIViewController?
+    weak var viewController: SearchViewDisplaying?
 }
 
 extension SearchPresenter: SearchPresenting {
-    
+    func presentTweets(_ tweets: Tweets) {
+        
+    }
 }

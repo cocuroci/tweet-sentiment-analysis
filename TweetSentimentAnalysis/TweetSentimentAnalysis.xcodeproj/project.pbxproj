@@ -148,8 +148,8 @@
 				AC4FE63725CDC9C400AABAA0 /* SearchViewController.swift */,
 				AC4FE64225CDD1E800AABAA0 /* SearchInteractor.swift */,
 				AC4FE64625CDD3DD00AABAA0 /* SearchService.swift */,
-				AC4FE65025CDD7C600AABAA0 /* Tweets.swift */,
 				AC4FE65A25CDFC3D00AABAA0 /* SearchPresenter.swift */,
+				AC4FE65025CDD7C600AABAA0 /* Tweets.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
