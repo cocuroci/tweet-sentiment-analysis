@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		AC4FE5EC25CDBA6000AABAA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC4FE5EB25CDBA6000AABAA0 /* Assets.xcassets */; };
 		AC4FE5EF25CDBA6000AABAA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC4FE5ED25CDBA6000AABAA0 /* LaunchScreen.storyboard */; };
 		AC4FE5FA25CDBA6000AABAA0 /* TweetSentimentAnalysisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE5F925CDBA6000AABAA0 /* TweetSentimentAnalysisTests.swift */; };
+		AC4FE62425CDC6F700AABAA0 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = AC4FE62325CDC6F700AABAA0 /* Moya */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC4FE62425CDC6F700AABAA0 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +114,9 @@
 			dependencies = (
 			);
 			name = TweetSentimentAnalysis;
+			packageProductDependencies = (
+				AC4FE62325CDC6F700AABAA0 /* Moya */,
+			);
 			productName = TweetSentimentAnalysis;
 			productReference = AC4FE5DF25CDBA5F00AABAA0 /* TweetSentimentAnalysis.app */;
 			productType = "com.apple.product-type.application";
@@ -161,6 +166,9 @@
 				Base,
 			);
 			mainGroup = AC4FE5D625CDBA5F00AABAA0;
+			packageReferences = (
+				AC4FE62225CDC6F700AABAA0 /* XCRemoteSwiftPackageReference "Moya" */,
+			);
 			productRefGroup = AC4FE5E025CDBA5F00AABAA0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -460,6 +468,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AC4FE62225CDC6F700AABAA0 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AC4FE62325CDC6F700AABAA0 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC4FE62225CDC6F700AABAA0 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AC4FE5D725CDBA5F00AABAA0 /* Project object */;
 }
