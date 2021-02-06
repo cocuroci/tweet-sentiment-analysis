@@ -17,7 +17,7 @@
 		AC4FE63D25CDCC0900AABAA0 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE63C25CDCC0900AABAA0 /* ViewConfiguration.swift */; };
 		AC4FE64325CDD1E800AABAA0 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE64225CDD1E800AABAA0 /* SearchInteractor.swift */; };
 		AC4FE64725CDD3DD00AABAA0 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE64625CDD3DD00AABAA0 /* SearchService.swift */; };
-		AC4FE64B25CDD42100AABAA0 /* SearchEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE64A25CDD42100AABAA0 /* SearchEndpoint.swift */; };
+		AC4FE64B25CDD42100AABAA0 /* TwitterEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE64A25CDD42100AABAA0 /* TwitterEndpoint.swift */; };
 		AC4FE65125CDD7C600AABAA0 /* Tweets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE65025CDD7C600AABAA0 /* Tweets.swift */; };
 		AC4FE65725CDFB7300AABAA0 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE65625CDFB7300AABAA0 /* Environment.swift */; };
 		AC4FE65B25CDFC3D00AABAA0 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE65A25CDFC3D00AABAA0 /* SearchPresenter.swift */; };
@@ -49,7 +49,7 @@
 		AC4FE63C25CDCC0900AABAA0 /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
 		AC4FE64225CDD1E800AABAA0 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
 		AC4FE64625CDD3DD00AABAA0 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
-		AC4FE64A25CDD42100AABAA0 /* SearchEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEndpoint.swift; sourceTree = "<group>"; };
+		AC4FE64A25CDD42100AABAA0 /* TwitterEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterEndpoint.swift; sourceTree = "<group>"; };
 		AC4FE65025CDD7C600AABAA0 /* Tweets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweets.swift; sourceTree = "<group>"; };
 		AC4FE65625CDFB7300AABAA0 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		AC4FE65A25CDFC3D00AABAA0 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 		AC4FE62E25CDC89F00AABAA0 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				AC4FE64A25CDD42100AABAA0 /* SearchEndpoint.swift */,
+				AC4FE64A25CDD42100AABAA0 /* TwitterEndpoint.swift */,
 				AC4FE62F25CDC8B000AABAA0 /* SearchFactory.swift */,
 				AC4FE63725CDC9C400AABAA0 /* SearchViewController.swift */,
 				AC4FE64225CDD1E800AABAA0 /* SearchInteractor.swift */,
@@ -294,7 +294,7 @@
 				AC4FE63825CDC9C400AABAA0 /* SearchViewController.swift in Sources */,
 				AC4FE64725CDD3DD00AABAA0 /* SearchService.swift in Sources */,
 				AC4FE63D25CDCC0900AABAA0 /* ViewConfiguration.swift in Sources */,
-				AC4FE64B25CDD42100AABAA0 /* SearchEndpoint.swift in Sources */,
+				AC4FE64B25CDD42100AABAA0 /* TwitterEndpoint.swift in Sources */,
 				AC4FE5E525CDBA5F00AABAA0 /* SceneDelegate.swift in Sources */,
 				AC4FE65725CDFB7300AABAA0 /* Environment.swift in Sources */,
 			);

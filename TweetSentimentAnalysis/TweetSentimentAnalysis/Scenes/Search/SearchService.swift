@@ -6,10 +6,10 @@ protocol SearchServicing {
 }
 
 final class SearchService {
-    private let provider: MoyaProvider<SearchEndpoint>
+    private let provider: MoyaProvider<TwitterEndpoint>
     private let dispatchQueue: DispatchQueue
     
-    init(provider: MoyaProvider<SearchEndpoint>, dispatchQueue: DispatchQueue = DispatchQueue.main) {
+    init(provider: MoyaProvider<TwitterEndpoint>, dispatchQueue: DispatchQueue = DispatchQueue.main) {
         self.provider = provider
         self.dispatchQueue = dispatchQueue
     }

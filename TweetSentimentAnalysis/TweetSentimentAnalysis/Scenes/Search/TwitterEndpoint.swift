@@ -1,11 +1,11 @@
 import Foundation
 import Moya
 
-enum SearchEndpoint {
+enum TwitterEndpoint {
     case search(user: String)
 }
 
-extension SearchEndpoint: TargetType {
+extension TwitterEndpoint: TargetType {
     var baseURL: URL {
         URL(string: "https://api.twitter.com/2/tweets")!
     }
@@ -29,7 +29,7 @@ extension SearchEndpoint: TargetType {
         }
     }
     
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         ["Authorization": "Bearer \(Environment.token)"]
     }
 }
