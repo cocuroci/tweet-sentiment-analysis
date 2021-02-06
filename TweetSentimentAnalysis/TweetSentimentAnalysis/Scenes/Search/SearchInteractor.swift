@@ -6,12 +6,12 @@ protocol SearchInteracting {
 
 final class SearchInteractor {
     private let presenter: SearchPresenting
-    private let service: SearchServicing
+    private let searchService: SearchServicing
     private let minimumCharacters: Int
     
-    init(presenter: SearchPresenting, service: SearchServicing, minimumCharacters: Int = 3) {
+    init(presenter: SearchPresenting, searchService: SearchServicing, minimumCharacters: Int = 3) {
         self.presenter = presenter
-        self.service = service
+        self.searchService = searchService
         self.minimumCharacters = minimumCharacters
     }
     
@@ -31,7 +31,7 @@ extension SearchInteractor: SearchInteracting {
             return
         }
         
-        service.search(user: username) { [weak self] result in
+        searchService.search(user: username) { [weak self] result in
             switch result {
             case .success(let tweets):
                 self?.handleResult(tweets: tweets)
