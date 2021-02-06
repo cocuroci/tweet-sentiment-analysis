@@ -25,6 +25,7 @@
 		AC4FE69125CE29E300AABAA0 /* SearchPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE69025CE29E300AABAA0 /* SearchPresenterTests.swift */; };
 		AC4FE69725CF373300AABAA0 /* GoogleEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE69625CF373300AABAA0 /* GoogleEndpoint.swift */; };
 		AC4FE69B25CF3A7A00AABAA0 /* DocumentSentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE69A25CF3A7A00AABAA0 /* DocumentSentiment.swift */; };
+		AC4FE6A125CF3BB300AABAA0 /* SentimentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE6A025CF3BB300AABAA0 /* SentimentService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		AC4FE69025CE29E300AABAA0 /* SearchPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenterTests.swift; sourceTree = "<group>"; };
 		AC4FE69625CF373300AABAA0 /* GoogleEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleEndpoint.swift; sourceTree = "<group>"; };
 		AC4FE69A25CF3A7A00AABAA0 /* DocumentSentiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentSentiment.swift; sourceTree = "<group>"; };
+		AC4FE6A025CF3BB300AABAA0 /* SentimentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,8 +156,9 @@
 				AC4FE62F25CDC8B000AABAA0 /* SearchFactory.swift */,
 				AC4FE63725CDC9C400AABAA0 /* SearchViewController.swift */,
 				AC4FE64225CDD1E800AABAA0 /* SearchInteractor.swift */,
-				AC4FE64625CDD3DD00AABAA0 /* SearchService.swift */,
 				AC4FE65A25CDFC3D00AABAA0 /* SearchPresenter.swift */,
+				AC4FE64625CDD3DD00AABAA0 /* SearchService.swift */,
+				AC4FE6A025CF3BB300AABAA0 /* SentimentService.swift */,
 				AC4FE65025CDD7C600AABAA0 /* Tweets.swift */,
 				AC4FE69A25CF3A7A00AABAA0 /* DocumentSentiment.swift */,
 			);
@@ -293,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC4FE65B25CDFC3D00AABAA0 /* SearchPresenter.swift in Sources */,
+				AC4FE6A125CF3BB300AABAA0 /* SentimentService.swift in Sources */,
 				AC4FE69725CF373300AABAA0 /* GoogleEndpoint.swift in Sources */,
 				AC4FE64325CDD1E800AABAA0 /* SearchInteractor.swift in Sources */,
 				AC4FE63025CDC8B000AABAA0 /* SearchFactory.swift in Sources */,
