@@ -23,6 +23,7 @@
 		AC4FE65B25CDFC3D00AABAA0 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE65A25CDFC3D00AABAA0 /* SearchPresenter.swift */; };
 		AC4FE68925CE01D700AABAA0 /* SearchInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE68825CE01D700AABAA0 /* SearchInteractorTests.swift */; };
 		AC4FE69125CE29E300AABAA0 /* SearchPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE69025CE29E300AABAA0 /* SearchPresenterTests.swift */; };
+		AC4FE69725CF373300AABAA0 /* GoogleEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE69625CF373300AABAA0 /* GoogleEndpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		AC4FE65A25CDFC3D00AABAA0 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		AC4FE68825CE01D700AABAA0 /* SearchInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractorTests.swift; sourceTree = "<group>"; };
 		AC4FE69025CE29E300AABAA0 /* SearchPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenterTests.swift; sourceTree = "<group>"; };
+		AC4FE69625CF373300AABAA0 /* GoogleEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleEndpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				AC4FE64A25CDD42100AABAA0 /* TwitterEndpoint.swift */,
+				AC4FE69625CF373300AABAA0 /* GoogleEndpoint.swift */,
 				AC4FE62F25CDC8B000AABAA0 /* SearchFactory.swift */,
 				AC4FE63725CDC9C400AABAA0 /* SearchViewController.swift */,
 				AC4FE64225CDD1E800AABAA0 /* SearchInteractor.swift */,
@@ -287,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC4FE65B25CDFC3D00AABAA0 /* SearchPresenter.swift in Sources */,
+				AC4FE69725CF373300AABAA0 /* GoogleEndpoint.swift in Sources */,
 				AC4FE64325CDD1E800AABAA0 /* SearchInteractor.swift in Sources */,
 				AC4FE63025CDC8B000AABAA0 /* SearchFactory.swift in Sources */,
 				AC4FE5E325CDBA5F00AABAA0 /* AppDelegate.swift in Sources */,
