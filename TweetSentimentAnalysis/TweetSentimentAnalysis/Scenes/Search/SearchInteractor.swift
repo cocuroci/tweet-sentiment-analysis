@@ -18,11 +18,11 @@ final class SearchInteractor {
 
 extension SearchInteractor: SearchInteracting {
     func search(text: String?) {
-        guard let user = text, user.count >= minimumCharacters else {
+        guard let username = text, username.count >= minimumCharacters else {
             return
         }
         
-        service.search(user: user) { [weak self] result in
+        service.search(user: username) { [weak self] result in
             switch result {
             case .success(let tweets):
                 self?.presenter.presentTweets(tweets)

@@ -21,6 +21,6 @@ extension SearchPresenter: SearchPresenting {
     }
     
     func presentGenericError() {
-        
+        viewController?.displayError(message: "Aconteceu um erro ao fazer a busca")
     }
 }

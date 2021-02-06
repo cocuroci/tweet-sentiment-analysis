@@ -4,6 +4,7 @@ import Moya
 protocol SearchViewDisplaying: AnyObject {
     func displayTweets(_ tweets: [Tweet])
     func displayEmptyResult(message: String)
+    func displayError(message: String)
 }
 
 final class SearchViewController: UITableViewController, ViewConfiguration {
@@ -67,6 +68,10 @@ extension SearchViewController: SearchViewDisplaying {
     func displayEmptyResult(message: String) {
         self.tweets = []
         tableView.reloadData()
+        showAlert(with: message)
+    }
+    
+    func displayError(message: String) {
         showAlert(with: message)
     }
 }

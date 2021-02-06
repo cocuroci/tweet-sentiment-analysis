@@ -77,7 +77,7 @@ final class SearchInteractorTests: XCTestCase {
     }
     
     func testSearch_WhenTextCharacterIsGreaterThanOrEqualToMinimumCharactersAndFailureResponse_ShouldPresentGenericError() {
-        serviceMock.result = .failure(MoyaError.statusCode(Response.init(statusCode: 400, data: Data())))
+        serviceMock.result = .failure(MoyaError.statusCode(Response(statusCode: 400, data: Data())))
         
         sut.search(text: "user")
         
