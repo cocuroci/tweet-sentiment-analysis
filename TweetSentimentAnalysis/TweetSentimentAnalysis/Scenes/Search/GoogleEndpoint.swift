@@ -28,7 +28,7 @@ extension GoogleEndpoint: TargetType {
             return Task.requestCompositeParameters(
                 bodyParameters: ["document": ["content": content, "type": "PLAIN_TEXT"]],
                 bodyEncoding: JSONEncoding.default,
-                urlParameters: ["key": Environment.token]
+                urlParameters: ["key": Environment.key]
             )
         }
     }
