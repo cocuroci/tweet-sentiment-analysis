@@ -90,3 +90,11 @@ extension SearchViewController {
         return cell
     }
 }
+
+// MARK: -  UITableViewDelegate
+
+extension SearchViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        interactor.didSelectTweet(with: indexPath)
+    }
+}

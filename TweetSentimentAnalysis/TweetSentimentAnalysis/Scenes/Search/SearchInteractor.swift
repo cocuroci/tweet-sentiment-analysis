@@ -2,6 +2,7 @@ import Foundation
 
 protocol SearchInteracting {
     func search(text: String?)
+    func didSelectTweet(with indexPath: IndexPath)
 }
 
 final class SearchInteractor {
@@ -28,6 +29,17 @@ final class SearchInteractor {
         presenter.presentTweets(arrayOfTweets)
         self.tweets = arrayOfTweets
     }
+    
+    private func analysisTweet(_ tweet: Tweet) {
+        sentimentService.analysis(content: tweet.text) { result in
+            switch result {
+            case .success(let sentiment):
+                debugPrint(sentiment)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
 }
 
 extension SearchInteractor: SearchInteracting {
@@ -44,5 +56,13 @@ extension SearchInteractor: SearchInteracting {
                 self?.presenter.presentGenericError()
             }
         }
+    }
+    
+    func didSelectTweet(with indexPath: IndexPath) {
+        guard tweets.indices.contains(indexPath.row) else {
+            return
+        }
+        
+        analysisTweet(tweets[indexPath.row])
     }
 }
