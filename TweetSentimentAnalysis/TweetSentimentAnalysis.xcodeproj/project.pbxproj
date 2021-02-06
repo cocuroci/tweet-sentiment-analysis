@@ -24,6 +24,7 @@
 		AC4FE68925CE01D700AABAA0 /* SearchInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE68825CE01D700AABAA0 /* SearchInteractorTests.swift */; };
 		AC4FE69125CE29E300AABAA0 /* SearchPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE69025CE29E300AABAA0 /* SearchPresenterTests.swift */; };
 		AC4FE69725CF373300AABAA0 /* GoogleEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE69625CF373300AABAA0 /* GoogleEndpoint.swift */; };
+		AC4FE69B25CF3A7A00AABAA0 /* DocumentSentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE69A25CF3A7A00AABAA0 /* DocumentSentiment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		AC4FE68825CE01D700AABAA0 /* SearchInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractorTests.swift; sourceTree = "<group>"; };
 		AC4FE69025CE29E300AABAA0 /* SearchPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenterTests.swift; sourceTree = "<group>"; };
 		AC4FE69625CF373300AABAA0 /* GoogleEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleEndpoint.swift; sourceTree = "<group>"; };
+		AC4FE69A25CF3A7A00AABAA0 /* DocumentSentiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentSentiment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				AC4FE64625CDD3DD00AABAA0 /* SearchService.swift */,
 				AC4FE65A25CDFC3D00AABAA0 /* SearchPresenter.swift */,
 				AC4FE65025CDD7C600AABAA0 /* Tweets.swift */,
+				AC4FE69A25CF3A7A00AABAA0 /* DocumentSentiment.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				AC4FE63825CDC9C400AABAA0 /* SearchViewController.swift in Sources */,
 				AC4FE64725CDD3DD00AABAA0 /* SearchService.swift in Sources */,
 				AC4FE63D25CDCC0900AABAA0 /* ViewConfiguration.swift in Sources */,
+				AC4FE69B25CF3A7A00AABAA0 /* DocumentSentiment.swift in Sources */,
 				AC4FE64B25CDD42100AABAA0 /* TwitterEndpoint.swift in Sources */,
 				AC4FE5E525CDBA5F00AABAA0 /* SceneDelegate.swift in Sources */,
 				AC4FE65725CDFB7300AABAA0 /* Environment.swift in Sources */,
