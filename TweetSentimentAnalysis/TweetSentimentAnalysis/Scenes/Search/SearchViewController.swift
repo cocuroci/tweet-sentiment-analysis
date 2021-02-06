@@ -3,6 +3,7 @@ import Moya
 
 protocol SearchViewDisplaying: AnyObject {
     func displayTweets(_ tweets: [Tweet])
+    func displayEmptyResult(message: String)
 }
 
 final class SearchViewController: UITableViewController, ViewConfiguration {
@@ -40,6 +41,17 @@ final class SearchViewController: UITableViewController, ViewConfiguration {
     }
 }
 
+private extension SearchViewController {
+    func showAlert(with message: String) {
+        let alertController = UIAlertController(title: "Ops!", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default)
+        
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true)
+    }
+}
+
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         interactor.search(text: searchBar.text)
@@ -50,6 +62,12 @@ extension SearchViewController: SearchViewDisplaying {
     func displayTweets(_ tweets: [Tweet]) {
         self.tweets = tweets
         tableView.reloadData()
+    }
+    
+    func displayEmptyResult(message: String) {
+        self.tweets = []
+        tableView.reloadData()
+        showAlert(with: message)
     }
 }
 

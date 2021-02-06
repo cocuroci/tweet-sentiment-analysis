@@ -8,16 +8,12 @@ protocol SearchPresenting: AnyObject {
 
 final class SearchPresenter {
     weak var viewController: SearchViewDisplaying?
-    
-    private func presentEmptySearch() {
-        
-    }
 }
 
 extension SearchPresenter: SearchPresenting {
     func presentTweets(_ tweets: Tweets) {
         guard let tweets = tweets.data else {
-            presentEmptySearch()
+            viewController?.displayEmptyResult(message: "Esse usuário não possui tweets recentes")
             return
         }
         
