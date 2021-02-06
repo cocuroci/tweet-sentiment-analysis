@@ -7,21 +7,26 @@ protocol SearchInteracting {
 final class SearchInteractor {
     private let presenter: SearchPresenting
     private let searchService: SearchServicing
+    private let sentimentService: SentimentServicing
     private let minimumCharacters: Int
+    private var tweets = [Tweet]()
     
-    init(presenter: SearchPresenting, searchService: SearchServicing, minimumCharacters: Int = 3) {
+    init(presenter: SearchPresenting, searchService: SearchServicing, sentimentService: SentimentServicing, minimumCharacters: Int = 3) {
         self.presenter = presenter
         self.searchService = searchService
+        self.sentimentService = sentimentService
         self.minimumCharacters = minimumCharacters
     }
     
     private func handleResult(tweets: Tweets?) {
         guard let arrayOfTweets = tweets?.data else {
+            self.tweets = []
             presenter.presentEmptyResult()
             return
         }
         
         presenter.presentTweets(arrayOfTweets)
+        self.tweets = arrayOfTweets
     }
 }
 
