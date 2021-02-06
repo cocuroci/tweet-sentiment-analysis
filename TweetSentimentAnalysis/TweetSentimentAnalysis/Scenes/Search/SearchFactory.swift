@@ -6,6 +6,10 @@ enum SearchFactory {
         let service: SearchServicing = SearchService(provider: MoyaProvider<SearchEndpoint>())
         let presenter: SearchPresenting = SearchPresenter()
         let interactor: SearchInteracting = SearchInteractor(presenter: presenter, service: service)
-        return SearchViewController(interactor: interactor)
+        let viewController = SearchViewController(interactor: interactor)
+        
+        presenter.viewController = viewController
+        
+        return viewController
     }
 }

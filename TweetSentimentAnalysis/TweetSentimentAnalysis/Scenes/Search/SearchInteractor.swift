@@ -25,7 +25,7 @@ extension SearchInteractor: SearchInteracting {
         service.search(user: user) { [weak self] result in
             switch result {
             case .success(let tweets):
-                tweets.data == nil ? self?.presenter.presentEmptySearch() : self?.presenter.presentTweets(tweets)
+                self?.presenter.presentTweets(tweets)
             case .failure:
                 self?.presenter.presentGenericError()
             }
