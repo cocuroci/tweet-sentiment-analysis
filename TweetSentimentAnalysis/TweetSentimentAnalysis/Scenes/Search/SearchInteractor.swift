@@ -14,6 +14,15 @@ final class SearchInteractor {
         self.service = service
         self.minimumCharacters = minimumCharacters
     }
+    
+    private func handleResult(tweets: Tweets?) {
+        guard let arrayOfTweets = tweets?.data else {
+            presenter.presentEmptyResult()
+            return
+        }
+        
+        presenter.presentTweets(arrayOfTweets)
+    }
 }
 
 extension SearchInteractor: SearchInteracting {
@@ -25,7 +34,7 @@ extension SearchInteractor: SearchInteracting {
         service.search(user: username) { [weak self] result in
             switch result {
             case .success(let tweets):
-                self?.presenter.presentTweets(tweets)
+                self?.handleResult(tweets: tweets)
             case .failure:
                 self?.presenter.presentGenericError()
             }

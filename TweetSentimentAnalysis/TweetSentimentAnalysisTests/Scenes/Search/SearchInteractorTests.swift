@@ -7,11 +7,18 @@ private final class SearchPresenterSpy: SearchPresenting {
     
     // MARK: - presentTweets
     private(set) var presentTweetsCallsCount = 0
-    private(set) var presentTweets: Tweets?
+    private(set) var presentTweets: [Tweet]?
     
-    func presentTweets(_ tweets: Tweets) {
+    func presentTweets(_ tweets: [Tweet]) {
         presentTweetsCallsCount += 1
         presentTweets = tweets
+    }
+    
+    // MARK: - presentEmptyResult
+    private(set) var presentEmptyResultCount = 0
+    
+    func presentEmptyResult() {
+        presentEmptyResultCount += 1
     }
     
     // MARK: - presentGenericError
@@ -61,9 +68,9 @@ final class SearchInteractorTests: XCTestCase {
         sut.search(text: "user")
         
         XCTAssertEqual(presenterSpy.presentTweetsCallsCount, 1)
-        XCTAssertEqual(presenterSpy.presentTweets?.data?.count, tweets.data?.count)
-        XCTAssertEqual(presenterSpy.presentTweets?.data?.first?.id, tweets.data?.first?.id)
-        XCTAssertEqual(presenterSpy.presentTweets?.data?.first?.text, tweets.data?.first?.text)
+        XCTAssertEqual(presenterSpy.presentTweets?.count, tweets.data?.count)
+        XCTAssertEqual(presenterSpy.presentTweets?.first?.id, tweets.data?.first?.id)
+        XCTAssertEqual(presenterSpy.presentTweets?.first?.text, tweets.data?.first?.text)
     }
     
     func testSearch_WhenTextCharacterIsGreaterThanOrEqualToMinimumCharactersAndSuccessResponseAndResultIsEmpty_ShouldPresentEmptySearch() {
@@ -72,8 +79,8 @@ final class SearchInteractorTests: XCTestCase {
         
         sut.search(text: "user")
         
-        XCTAssertEqual(presenterSpy.presentTweetsCallsCount, 1)
-        XCTAssertNil(presenterSpy.presentTweets?.data)
+        XCTAssertEqual(presenterSpy.presentEmptyResultCount, 1)
+        XCTAssertNil(presenterSpy.presentTweets)
     }
     
     func testSearch_WhenTextCharacterIsGreaterThanOrEqualToMinimumCharactersAndFailureResponse_ShouldPresentGenericError() {
