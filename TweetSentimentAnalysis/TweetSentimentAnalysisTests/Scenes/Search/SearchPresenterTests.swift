@@ -2,18 +2,6 @@ import XCTest
 @testable import TweetSentimentAnalysis
 
 private final class SearchViewControllerSpy: SearchViewDisplaying {
-    func clearData() {
-        
-    }
-    
-    func displayError(title: String, message: String, buttonText: String) {
-        
-    }
-    
-    func displaySentimentAlert(title: String, message: String, buttonText: String) {
-        
-    }
-    
     // MARK: - displayTweets
     private(set) var displayTweetsCount = 0
     private(set) var tweets: [Tweet]?
@@ -23,22 +11,37 @@ private final class SearchViewControllerSpy: SearchViewDisplaying {
         self.tweets = tweets
     }
     
-    // MARK: - displayEmptyResult
-    private(set) var displayEmptyResultCount = 0
-    private(set) var emptyResultMessage: String?
-    
-    func displayEmptyResult(message: String) {
-        displayEmptyResultCount += 1
-        emptyResultMessage = message
-    }
-    
     // MARK: - displayError
     private(set) var displayErrorCount = 0
-    private(set) var errorMessage: String?
+    private(set) var titleError: String?
+    private(set) var messageError: String?
+    private(set) var buttonTextError: String?
     
-    func displayError(message: String) {
+    func displayError(title: String, message: String, buttonText: String) {
         displayErrorCount += 1
-        errorMessage = message
+        titleError = title
+        messageError = message
+        buttonTextError = buttonText
+    }
+    
+    // MARK: - displaySentimentAlert
+    private(set) var displaySentimentAlertCount = 0
+    private(set) var titleSentiment: String?
+    private(set) var messageSentiment: String?
+    private(set) var buttonTextSentiment: String?
+    
+    func displaySentimentAlert(title: String, message: String, buttonText: String) {
+        displaySentimentAlertCount += 1
+        titleSentiment = title
+        messageSentiment = message
+        buttonTextSentiment = buttonText
+    }
+    
+    // MARK: - clearData
+    private(set) var clearDataCount = 0
+    
+    func clearData() {
+        clearDataCount += 1
     }
 }
 
@@ -64,14 +67,19 @@ final class SearchPresenterTests: XCTestCase {
     func testPresentEmptyResult_ShouldDisplayEmptyResult() {
         sut.presentEmptyResult()
         
-        XCTAssertEqual(viewControllerSpy.displayEmptyResultCount, 1)
-        XCTAssertEqual(viewControllerSpy.emptyResultMessage, "Esse usuário não possui tweets recentes")
+        XCTAssertEqual(viewControllerSpy.displayErrorCount, 1)
+        XCTAssertEqual(viewControllerSpy.titleError, "Ops!")
+        XCTAssertEqual(viewControllerSpy.messageError, "Esse usuário não possui tweets recentes")
+        XCTAssertEqual(viewControllerSpy.buttonTextError, "Ok")
+        XCTAssertEqual(viewControllerSpy.clearDataCount, 1)
     }
     
-    func testPresentGenericError_ShouldDisplayError() {
-        //sut.presentGenericError()
+    func testPresentSearchError_ShouldDisplayError() {
+        sut.presentSearchError()
         
         XCTAssertEqual(viewControllerSpy.displayErrorCount, 1)
-        XCTAssertEqual(viewControllerSpy.errorMessage, "Aconteceu um erro ao fazer a busca")
+        XCTAssertEqual(viewControllerSpy.titleError, "Ops!")
+        XCTAssertEqual(viewControllerSpy.messageError, "Aconteceu um erro ao fazer a busca")
+        XCTAssertEqual(viewControllerSpy.buttonTextError, "Ok")
     }
 }
