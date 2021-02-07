@@ -26,6 +26,7 @@
 		AC4FE69725CF373300AABAA0 /* GoogleEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE69625CF373300AABAA0 /* GoogleEndpoint.swift */; };
 		AC4FE69B25CF3A7A00AABAA0 /* DocumentSentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE69A25CF3A7A00AABAA0 /* DocumentSentiment.swift */; };
 		AC4FE6A125CF3BB300AABAA0 /* SentimentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE6A025CF3BB300AABAA0 /* SentimentService.swift */; };
+		AC4FE6A825D028E500AABAA0 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FE6A725D028E500AABAA0 /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		AC4FE69625CF373300AABAA0 /* GoogleEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleEndpoint.swift; sourceTree = "<group>"; };
 		AC4FE69A25CF3A7A00AABAA0 /* DocumentSentiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentSentiment.swift; sourceTree = "<group>"; };
 		AC4FE6A025CF3BB300AABAA0 /* SentimentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentService.swift; sourceTree = "<group>"; };
+		AC4FE6A725D028E500AABAA0 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		AC4FE5E125CDBA5F00AABAA0 /* TweetSentimentAnalysis */ = {
 			isa = PBXGroup;
 			children = (
+				AC4FE6A625D028D200AABAA0 /* Extensions */,
 				AC4FE63B25CDCBF400AABAA0 /* Protocols */,
 				AC4FE62825CDC7AB00AABAA0 /* Resources */,
 				AC4FE62725CDC79A00AABAA0 /* Start */,
@@ -188,6 +191,14 @@
 				AC4FE69025CE29E300AABAA0 /* SearchPresenterTests.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		AC4FE6A625D028D200AABAA0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AC4FE6A725D028E500AABAA0 /* String+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +316,7 @@
 				AC4FE63825CDC9C400AABAA0 /* SearchViewController.swift in Sources */,
 				AC4FE64725CDD3DD00AABAA0 /* SearchService.swift in Sources */,
 				AC4FE63D25CDCC0900AABAA0 /* ViewConfiguration.swift in Sources */,
+				AC4FE6A825D028E500AABAA0 /* String+Extensions.swift in Sources */,
 				AC4FE69B25CF3A7A00AABAA0 /* DocumentSentiment.swift in Sources */,
 				AC4FE64B25CDD42100AABAA0 /* TwitterEndpoint.swift in Sources */,
 				AC4FE5E525CDBA5F00AABAA0 /* SceneDelegate.swift in Sources */,

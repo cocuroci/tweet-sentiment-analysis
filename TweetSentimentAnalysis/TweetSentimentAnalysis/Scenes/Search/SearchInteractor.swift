@@ -19,7 +19,7 @@ final class SearchInteractor {
         self.minimumCharacters = minimumCharacters
     }
     
-    private func handleResult(tweets: Tweets?) {
+    private func handleSearchResult(tweets: Tweets?) {
         guard let arrayOfTweets = tweets?.data else {
             self.tweets = []
             presenter.presentEmptyResult()
@@ -30,13 +30,24 @@ final class SearchInteractor {
         self.tweets = arrayOfTweets
     }
     
+    private func handleAnalysisResult(tweet: Tweet, sentiment: Sentiment) {
+        switch sentiment.score {
+        case 0.25...:
+            presenter.presentPositiveSentiment(tweet: tweet)
+        case ...(-0.25):
+            presenter.presentNegativeSentiment(tweet: tweet)
+        default:
+            presenter.presentNeutralSentiment(tweet: tweet)
+        }
+    }
+    
     private func analysisTweet(_ tweet: Tweet) {
-        sentimentService.analysis(content: tweet.text) { result in
+        sentimentService.analysis(content: tweet.text) { [weak self] result in
             switch result {
             case .success(let sentiment):
-                debugPrint(sentiment)
-            case .failure(let error):
-                debugPrint(error)
+                self?.handleAnalysisResult(tweet: tweet, sentiment: sentiment)
+            case .failure:
+                self?.presenter.presentAnalysisError()
             }
         }
     }
@@ -51,9 +62,9 @@ extension SearchInteractor: SearchInteracting {
         searchService.search(user: username) { [weak self] result in
             switch result {
             case .success(let tweets):
-                self?.handleResult(tweets: tweets)
+                self?.handleSearchResult(tweets: tweets)
             case .failure:
-                self?.presenter.presentGenericError()
+                self?.presenter.presentSearchError()
             }
         }
     }

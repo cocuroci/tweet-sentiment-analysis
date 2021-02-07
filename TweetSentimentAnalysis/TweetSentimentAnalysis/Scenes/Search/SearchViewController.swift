@@ -3,13 +3,13 @@ import Moya
 
 protocol SearchViewDisplaying: AnyObject {
     func displayTweets(_ tweets: [Tweet])
-    func displayEmptyResult(message: String)
-    func displayError(message: String)
+    func clearData()
+    func displayError(title: String, message: String, buttonText: String)
+    func displaySentimentAlert(title: String, message: String, buttonText: String)
 }
 
 final class SearchViewController: UITableViewController, ViewConfiguration {
     private let interactor: SearchInteracting
-    
     private var tweets = [Tweet]()
     
     private lazy var searchController: UISearchController = {
@@ -43,12 +43,10 @@ final class SearchViewController: UITableViewController, ViewConfiguration {
 }
 
 private extension SearchViewController {
-    func showAlert(with message: String) {
-        let alertController = UIAlertController(title: "Ops!", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default)
-        
+    func showAlert(title: String, message: String, buttonText: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: buttonText, style: .default)
         alertController.addAction(okAction)
-        
         present(alertController, animated: true)
     }
 }
@@ -65,14 +63,17 @@ extension SearchViewController: SearchViewDisplaying {
         tableView.reloadData()
     }
     
-    func displayEmptyResult(message: String) {
+    func clearData() {
         self.tweets = []
         tableView.reloadData()
-        showAlert(with: message)
     }
     
-    func displayError(message: String) {
-        showAlert(with: message)
+    func displayError(title: String, message: String, buttonText: String) {
+        showAlert(title: title, message: message, buttonText: buttonText)
+    }
+    
+    func displaySentimentAlert(title: String, message: String, buttonText: String) {
+        showAlert(title: title, message: message, buttonText: buttonText)
     }
 }
 
@@ -96,5 +97,6 @@ extension SearchViewController {
 extension SearchViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         interactor.didSelectTweet(with: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
