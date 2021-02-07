@@ -6,6 +6,8 @@ protocol SearchViewDisplaying: AnyObject {
     func clearData()
     func displayError(title: String, message: String, buttonText: String)
     func displaySentimentAlert(title: String, message: String, buttonText: String)
+    func displayLoader()
+    func hideLoader()
 }
 
 final class SearchViewController: UITableViewController, ViewConfiguration {
@@ -21,6 +23,8 @@ final class SearchViewController: UITableViewController, ViewConfiguration {
         searchController.searchBar.delegate = self
         return searchController
     }()
+    
+    private lazy var loader: UIActivityIndicatorView = UIActivityIndicatorView(style: .medium)
     
     init(interactor: SearchInteracting) {
         self.interactor = interactor
@@ -39,6 +43,7 @@ final class SearchViewController: UITableViewController, ViewConfiguration {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: loader)
     }
 }
 
@@ -74,6 +79,14 @@ extension SearchViewController: SearchViewDisplaying {
     
     func displaySentimentAlert(title: String, message: String, buttonText: String) {
         showAlert(title: title, message: message, buttonText: buttonText)
+    }
+    
+    func displayLoader() {
+        loader.startAnimating()
+    }
+    
+    func hideLoader() {
+        loader.stopAnimating()
     }
 }
 

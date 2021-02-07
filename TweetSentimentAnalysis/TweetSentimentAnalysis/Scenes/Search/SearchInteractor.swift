@@ -42,6 +42,8 @@ final class SearchInteractor {
     }
     
     private func analysisTweet(_ tweet: Tweet) {
+        presenter.presentLoader()
+        
         sentimentService.analysis(content: tweet.text) { [weak self] result in
             switch result {
             case .success(let sentiment):
@@ -49,6 +51,8 @@ final class SearchInteractor {
             case .failure:
                 self?.presenter.presentAnalysisError()
             }
+            
+            self?.presenter.hideLoader()
         }
     }
 }
@@ -59,6 +63,8 @@ extension SearchInteractor: SearchInteracting {
             return
         }
         
+        presenter.presentLoader()
+        
         searchService.search(user: username) { [weak self] result in
             switch result {
             case .success(let tweets):
@@ -66,6 +72,8 @@ extension SearchInteractor: SearchInteracting {
             case .failure:
                 self?.presenter.presentSearchError()
             }
+            
+            self?.presenter.hideLoader()
         }
     }
     

@@ -55,6 +55,20 @@ private final class SearchPresenterSpy: SearchPresenting {
     func presentAnalysisError() {
         presentAnalysisErrorCount += 1
     }
+    
+    // MARK: - presentLoader
+    private(set) var presentLoaderCount = 0
+    
+    func presentLoader() {
+        presentLoaderCount += 1
+    }
+    
+    // MARK: - hideLoader
+    private(set) var hideLoaderCount = 0
+    
+    func hideLoader() {
+        hideLoaderCount += 1
+    }
 }
 
 private final class SearchServiceMock: SearchServicing {
@@ -98,13 +112,12 @@ final class SearchInteractorTests: XCTestCase {
     }()
     
     func testSearch_WhenTextCharacterIsLessThanMinimumCharacters_ShouldDoNothing() {
-        let tweets = Tweets(data: [Tweet(id: "1234", text: "Tweet")])
-        searchServiceMock.result = .success(tweets)
-        
         sut.search(text: "us")
         
         XCTAssertEqual(presenterSpy.presentTweetsCallsCount, 0)
         XCTAssertNil(presenterSpy.presentTweets)
+        XCTAssertEqual(presenterSpy.presentLoaderCount, 0)
+        XCTAssertEqual(presenterSpy.hideLoaderCount, 0)
     }
     
     func testSearch_WhenTextCharacterIsGreaterThanOrEqualToMinimumCharactersAndSuccessResponse_ShouldPresentTweets() {
@@ -117,6 +130,8 @@ final class SearchInteractorTests: XCTestCase {
         XCTAssertEqual(presenterSpy.presentTweets?.count, tweets.data?.count)
         XCTAssertEqual(presenterSpy.presentTweets?.first?.id, tweets.data?.first?.id)
         XCTAssertEqual(presenterSpy.presentTweets?.first?.text, tweets.data?.first?.text)
+        XCTAssertEqual(presenterSpy.presentLoaderCount, 1)
+        XCTAssertEqual(presenterSpy.hideLoaderCount, 1)
     }
     
     func testSearch_WhenTextCharacterIsGreaterThanOrEqualToMinimumCharactersAndSuccessResponseAndResultIsEmpty_ShouldPresentEmptySearch() {
@@ -127,6 +142,8 @@ final class SearchInteractorTests: XCTestCase {
         
         XCTAssertEqual(presenterSpy.presentEmptyResultCount, 1)
         XCTAssertNil(presenterSpy.presentTweets)
+        XCTAssertEqual(presenterSpy.presentLoaderCount, 1)
+        XCTAssertEqual(presenterSpy.hideLoaderCount, 1)
     }
     
     func testSearch_WhenTextCharacterIsGreaterThanOrEqualToMinimumCharactersAndFailureResponse_ShouldPresentGenericError() {
@@ -135,6 +152,8 @@ final class SearchInteractorTests: XCTestCase {
         sut.search(text: "user")
         
         XCTAssertEqual(presenterSpy.presentSearchErrorCount, 1)
+        XCTAssertEqual(presenterSpy.presentLoaderCount, 1)
+        XCTAssertEqual(presenterSpy.hideLoaderCount, 1)
     }
     
     func testDidSelectTweet_WhenResultIsSuccessAndScoreIsPositive_ShouldPresentPositiveSentiment() {
@@ -147,6 +166,8 @@ final class SearchInteractorTests: XCTestCase {
         sut.didSelectTweet(with: IndexPath(item: 0, section: 0))
         
         XCTAssertEqual(presenterSpy.presentPositiveSentimentCount, 1)
+        XCTAssertEqual(presenterSpy.presentLoaderCount, 2)
+        XCTAssertEqual(presenterSpy.hideLoaderCount, 2)
     }
     
     func testDidSelectTweet_WhenResultIsSuccessAndScoreIsPositive_ShouldPresentNeutralSentiment() {
@@ -159,6 +180,8 @@ final class SearchInteractorTests: XCTestCase {
         sut.didSelectTweet(with: IndexPath(item: 0, section: 0))
         
         XCTAssertEqual(presenterSpy.presentNeutralSentimentCount, 1)
+        XCTAssertEqual(presenterSpy.presentLoaderCount, 2)
+        XCTAssertEqual(presenterSpy.hideLoaderCount, 2)
     }
     
     func testDidSelectTweet_WhenResultIsSuccessAndScoreIsPositive_ShouldPresentNegativeSentiment() {
@@ -171,6 +194,8 @@ final class SearchInteractorTests: XCTestCase {
         sut.didSelectTweet(with: IndexPath(item: 0, section: 0))
         
         XCTAssertEqual(presenterSpy.presentNegativeSentimentCount, 1)
+        XCTAssertEqual(presenterSpy.presentLoaderCount, 2)
+        XCTAssertEqual(presenterSpy.hideLoaderCount, 2)
     }
     
     func testDidSelectTweet_WhenResultIsFailure_ShouldPresentAnalysisErrorCount() {
@@ -183,5 +208,7 @@ final class SearchInteractorTests: XCTestCase {
         sut.didSelectTweet(with: IndexPath(item: 0, section: 0))
         
         XCTAssertEqual(presenterSpy.presentAnalysisErrorCount, 1)
+        XCTAssertEqual(presenterSpy.presentLoaderCount, 2)
+        XCTAssertEqual(presenterSpy.hideLoaderCount, 2)
     }
 }

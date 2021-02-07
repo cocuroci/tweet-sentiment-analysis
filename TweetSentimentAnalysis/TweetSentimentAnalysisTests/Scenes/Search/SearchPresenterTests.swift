@@ -43,12 +43,26 @@ private final class SearchViewControllerSpy: SearchViewDisplaying {
     func clearData() {
         clearDataCount += 1
     }
+    
+    // MARK: - displayLoader
+    private(set) var displayLoaderCount = 0
+    
+    func displayLoader() {
+        displayLoaderCount += 1
+    }
+    
+    // MARK: - hideLoader
+    private(set) var hideLoaderCount = 0
+    
+    func hideLoader() {
+        hideLoaderCount += 1
+    }
 }
 
 final class SearchPresenterTests: XCTestCase {
     private let viewControllerSpy = SearchViewControllerSpy()
     private lazy var sut: SearchPresenting = {
-        let presenter = SearchPresenter()
+        let presenter = SearchPresenter(stringMaxLength: 50)
         presenter.viewController = viewControllerSpy
         return presenter
     }()
@@ -81,5 +95,70 @@ final class SearchPresenterTests: XCTestCase {
         XCTAssertEqual(viewControllerSpy.titleError, "Ops!")
         XCTAssertEqual(viewControllerSpy.messageError, "Aconteceu um erro ao fazer a busca")
         XCTAssertEqual(viewControllerSpy.buttonTextError, "Ok")
+    }
+    
+    func testPresentAnalysisError_ShouldDisplayError() {
+        sut.presentAnalysisError()
+        
+        XCTAssertEqual(viewControllerSpy.displayErrorCount, 1)
+        XCTAssertEqual(viewControllerSpy.titleError, "Ops!")
+        XCTAssertEqual(viewControllerSpy.messageError, "Aconteceu um erro ao analisar o tweet")
+        XCTAssertEqual(viewControllerSpy.buttonTextError, "Ok")
+    }
+    
+    func testPresentPositiveSentiment_ShouldDisplaySentimentAlert() {
+        let tweet = Tweet(id: "1234", text: "Olá, esse é um tweet positivo.")
+        
+        sut.presentPositiveSentiment(tweet: tweet)
+        
+        XCTAssertEqual(viewControllerSpy.displaySentimentAlertCount, 1)
+        XCTAssertEqual(viewControllerSpy.titleSentiment, "Sentimento do texto: 😀")
+        XCTAssertEqual(viewControllerSpy.messageSentiment, "Olá, esse é um tweet positivo.")
+        XCTAssertEqual(viewControllerSpy.buttonTextSentiment, "Ok")
+    }
+    
+    func testPresentPositiveSentiment_WhenTweetLengthIsGreaterThanTheLimit_ShouldDisplaySentimentAlert() {
+        let tweet = Tweet(id: "1234", text: "Olá, esse é um tweet positivo onde o texto passou do limite configurado no presenter")
+        
+        sut.presentPositiveSentiment(tweet: tweet)
+        
+        XCTAssertEqual(viewControllerSpy.displaySentimentAlertCount, 1)
+        XCTAssertEqual(viewControllerSpy.titleSentiment, "Sentimento do texto: 😀")
+        XCTAssertEqual(viewControllerSpy.messageSentiment, "Olá, esse é um tweet positivo onde o texto passou ...")
+        XCTAssertEqual(viewControllerSpy.buttonTextSentiment, "Ok")
+    }
+    
+    func testPresentNeutralSentiment_ShouldDisplaySentimentAlert() {
+        let tweet = Tweet(id: "1234", text: "Olá, esse é um tweet neutro.")
+        
+        sut.presentNeutralSentiment(tweet: tweet)
+        
+        XCTAssertEqual(viewControllerSpy.displaySentimentAlertCount, 1)
+        XCTAssertEqual(viewControllerSpy.titleSentiment, "Sentimento do texto: 😐")
+        XCTAssertEqual(viewControllerSpy.messageSentiment, "Olá, esse é um tweet neutro.")
+        XCTAssertEqual(viewControllerSpy.buttonTextSentiment, "Ok")
+    }
+    
+    func testPresentNegativeSentiment_ShouldDisplaySentimentAlert() {
+        let tweet = Tweet(id: "1234", text: "Olá, esse é um tweet negativo.")
+        
+        sut.presentNegativeSentiment(tweet: tweet)
+        
+        XCTAssertEqual(viewControllerSpy.displaySentimentAlertCount, 1)
+        XCTAssertEqual(viewControllerSpy.titleSentiment, "Sentimento do texto: 😩")
+        XCTAssertEqual(viewControllerSpy.messageSentiment, "Olá, esse é um tweet negativo.")
+        XCTAssertEqual(viewControllerSpy.buttonTextSentiment, "Ok")
+    }
+    
+    func testPresentLoader_ShouldDisplayLoader() {
+        sut.presentLoader()
+        
+        XCTAssertEqual(viewControllerSpy.displayLoaderCount, 1)
+    }
+    
+    func testHideLoader_ShouldDisplayLoader() {
+        sut.hideLoader()
+        
+        XCTAssertEqual(viewControllerSpy.hideLoaderCount, 1)
     }
 }

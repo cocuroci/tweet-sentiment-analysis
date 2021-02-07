@@ -9,6 +9,8 @@ protocol SearchPresenting: AnyObject {
     func presentPositiveSentiment(tweet: Tweet)
     func presentNegativeSentiment(tweet: Tweet)
     func presentNeutralSentiment(tweet: Tweet)
+    func presentLoader()
+    func hideLoader()
 }
 
 final class SearchPresenter {
@@ -60,5 +62,13 @@ extension SearchPresenter: SearchPresenting {
             message: tweet.text.maxLength(stringMaxLength),
             buttonText: "Ok"
         )
+    }
+    
+    func presentLoader() {
+        viewController?.displayLoader()
+    }
+    
+    func hideLoader() {
+        viewController?.hideLoader()
     }
 }
