@@ -18,16 +18,20 @@ final class SentimentService {
 extension SentimentService: SentimentServicing {
     func analysis(content: String, completion: @escaping (Result<Sentiment, Error>) -> Void) {
         provider.request(.analyzeSentiment(content: content)) { [weak self] result in
-            self?.dispatchQueue.async {
-                switch result {
-                case .success(let response):
-                    do {
-                        let documentSentiment = try response.filterSuccessfulStatusCodes().map(DocumentSentiment.self)
+            switch result {
+            case .success(let response):
+                do {
+                    let documentSentiment = try response.filterSuccessfulStatusCodes().map(DocumentSentiment.self)
+                    self?.dispatchQueue.async {
                         completion(.success(documentSentiment.sentiment))
-                    } catch {
+                    }
+                } catch {
+                    self?.dispatchQueue.async {
                         completion(.failure(error))
                     }
-                case .failure(let error):
+                }
+            case .failure(let error):
+                self?.dispatchQueue.async {
                     completion(.failure(error))
                 }
             }

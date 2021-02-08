@@ -18,16 +18,20 @@ final class SearchService {
 extension SearchService: SearchServicing {
     func search(user: String, completion: @escaping (Result<Tweets, Error>) -> Void) {
         provider.request(.search(user: user)) { [weak self] result in
-            self?.dispatchQueue.async {
-                switch result {
-                case .success(let response):
-                    do {
-                        let tweets = try response.filterSuccessfulStatusCodes().map(Tweets.self)
+            switch result {
+            case .success(let response):
+                do {
+                    let tweets = try response.filterSuccessfulStatusCodes().map(Tweets.self)
+                    self?.dispatchQueue.async {
                         completion(.success(tweets))
-                    } catch {
+                    }
+                } catch {
+                    self?.dispatchQueue.async {
                         completion(.failure(error))
                     }
-                case .failure(let error):
+                }
+            case .failure(let error):
+                self?.dispatchQueue.async {
                     completion(.failure(error))
                 }
             }
